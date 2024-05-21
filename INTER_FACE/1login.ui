@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.778, y1:1, x2:0.818, y2:0, stop:0 rgba(2d,2f,3), stop:1 rgba(59,59,59));
+
+</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>30</y>
+     <width>261</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(201, 164, 255);
+background-color: rgb();
+font-size: 30pt</string>
+   </property>
+   <property name="text">
+    <string>LOGIN HERE</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="login">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>140</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(227, 208, 255);
+font-size: 16pt;
+background-color:rgb(26, 26, 26);
+font: 25 15pt &quot;Yu Gothic UI Light&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Enter your login here..</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="password">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>200</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(227, 208, 255);
+font-size: 16pt;
+background-color:rgb(26, 26, 26);
+font: 25 15pt &quot;Yu Gothic UI Light&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Enter your password here..</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="joun">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>280</y>
+     <width>141</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(201, 164, 255);
+font: 16pt &quot;MS Shell Dlg 2&quot;;
+text-decoration: underline;
+background-color: rgb(54, 54, 57);</string>
+   </property>
+   <property name="text">
+    <string>Login!</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cr_new_acc">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>380</y>
+     <width>141</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(201, 164, 255);
+font: 10pt;
+background-color: rgb(54, 54, 57);</string>
+   </property>
+   <property name="text">
+    <string>or create new acc</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

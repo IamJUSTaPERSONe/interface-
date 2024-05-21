@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>30</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.778, y1:1, x2:0.818, y2:0, stop:0 rgba(59,59,59), stop:1 rgba(2d,2f,3));
+</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>20</y>
+     <width>201</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>30</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(201, 164, 255);
+background-color: rgb();
+font-size: 30pt</string>
+   </property>
+   <property name="text">
+    <string>SING UP </string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="login">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>120</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(227, 208, 255);
+font-size: 16pt;
+background-color:rgb(26, 26, 26);
+font: 25 15pt &quot;Yu Gothic UI Light&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Enter your login here..</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="password">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>190</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(227, 208, 255);
+font-size: 16pt;
+background-color:rgb(26, 26, 26);
+font: 25 15pt &quot;Yu Gothic UI Light&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Enter your password here..</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="joun2">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>340</y>
+     <width>141</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(201, 164, 255);
+font: 16pt &quot;MS Shell Dlg 2&quot;;
+text-decoration: underline;
+background-color: rgb(54, 54, 57);</string>
+   </property>
+   <property name="text">
+    <string>Joun us!</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="password_2">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>260</y>
+     <width>321</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(227, 208, 255);
+font-size: 16pt;
+background-color:rgb(26, 26, 26);
+font: 25 15pt &quot;Yu Gothic UI Light&quot;;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>Rereat your password here..</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ret_urn">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(106, 106, 106);
+background-color: qlineargradient(spread:pad, x1:0.988545, y1:0.443, x2:0, y2:0.494, stop:0 rgba(85, 85, 85), stop:1 rgba(104, 104, 104));
+color: rgb(226, 189, 255);</string>
+   </property>
+   <property name="text">
+    <string>&lt;--</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

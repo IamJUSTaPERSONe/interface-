@@ -30,7 +30,6 @@ def loginn():
     frame_1 = Frame(login, bg='#6BBFFF')
     frame_1.place(relwidth=1, relheight=1)
 
-
     login_head = Label(login, text='Ok! Now you need to login', bg='#6BBFFF', font=('Courier', 27))
     login_head.pack(pady=15)
     login_email = Label(login, text='Enter email', bg='#6BBFFF', font=('Courier', 15))
@@ -55,8 +54,6 @@ def loginn():
                 messagebox.showerror('Error', 'Incorrect login or password')
         else:
             messagebox.showerror('Error', 'Incorrect login')
-
-
 
 root = Tk()
 style = ttk.Style(root)

@@ -3,6 +3,7 @@ from tkinter import messagebox
 import pickle
 import tkinter.ttk as ttk
 
+#Проверка заполнения формы
 def save_data():
     if email_enter.get() == '':
         messagebox.showerror(':/', 'You forget to enter email')
@@ -18,6 +19,7 @@ def save_data():
         file_save.close()
         loginn()
 
+#2 окно
 def loginn():
     login = Toplevel()
     stylee = ttk.Style(login)
@@ -30,7 +32,7 @@ def loginn():
     frame_1 = Frame(login, bg='#1C222B')
     frame_1.place(relwidth=1, relheight=1)
 
-
+#проверка после регистр
     def log_pass():
         if login_enter.get() == '':
             messagebox.showerror(':/', 'You forget to enter email')
@@ -61,6 +63,7 @@ def loginn():
     enter_password.pack(pady=5)
     button_login = Button(login, text='Login now!', bg='#1C222B', fg='#3A5169', font=('Courier', 12), command=log_pass)
     button_login.pack(pady=25)
+
 
 def showpassword():
     if password_enter['show'] == '✖️':

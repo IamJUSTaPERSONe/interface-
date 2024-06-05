@@ -31,6 +31,24 @@ def loginn():
     frame_1.place(relwidth=1, relheight=1)
 
 
+    def log_pass():
+        if login_enter.get() == '':
+            messagebox.showerror(':/', 'You forget to enter email')
+        elif enter_password.get() == '':
+            messagebox.showerror('-_-','You forget to enter password')
+        else:
+            file_save = open('file_login.txt', 'rb')
+            a = pickle.load(file_save)
+            file_save.close()
+            if login_enter.get() in a:
+                if enter_password.get() == a[login_enter.get()]:
+                    messagebox.showinfo('Welcome!', 'Our app is not finished. Come back later:)')
+                else:
+                    messagebox.showerror('Error', 'Incorrect email or password')
+            else:
+                messagebox.showerror('Error', 'Incorrect email')
+
+
     login_head = Label(login, text='Ok! Now you need to login', bg='#1C222B', fg='#EBC2FF',  font=('Courier', 27))
     login_head.pack(pady=15)
     login_email = Label(login, text='Enter email', bg='#1C222B', fg='#EBC2FF', font=('Courier', 15))
@@ -43,29 +61,6 @@ def loginn():
     enter_password.pack(pady=5)
     button_login = Button(login, text='Login now!', bg='#1C222B', fg='#3A5169', font=('Courier', 12), command=log_pass)
     button_login.pack(pady=25)
-
-
-def log_pass():
-    a = messagebox.showinfo('d','hi')
-
-    # login_pass_save = {}
-    # login_pass_save[email_enter.get()] = password_enter.get()
-    # file_save = open('file_login.txt', 'wb')
-    # pickle.dump(login_pass_save, file_save)
-    # file_save.close()
-    # file_save = open('file_login.txt', 'rb')
-    # a = pickle.load(file_save)
-    # file_save.close()
-    # #
-    # if login_enter.get() in a:
-    #     if enter_password.get() == a[login_enter.get()]:
-    #         messagebox.showinfo('Welcome!', 'Our app is not finished. Come back later:)')
-    #     else:
-    #         messagebox.showerror('Error', 'Incorrect email or password')
-    # else:
-    #     messagebox.showerror('Error', 'Incorrect email')
-
-
 
 def showpassword():
     if password_enter['show'] == '✖️':

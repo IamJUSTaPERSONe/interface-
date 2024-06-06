@@ -2,10 +2,14 @@ from tkinter import *
 from tkinter import messagebox
 import pickle
 import tkinter.ttk as ttk
+from PIL import ImageTk, Image
+import os
+
 
 #Проверка заполнения формы
 def save_data():
     if email_enter.get() == '':
+        # ff = Label(root, text='enter email!!!', bg='#1C222B', fg='red', font=('Courier', 10)).place(x=198, y=148)
         messagebox.showerror(':/', 'You forget to enter email')
     elif password_enter.get() == '' or com_password_enter.get() == '':
         messagebox.showerror(':0', 'You forget to enter password')
@@ -21,7 +25,17 @@ def save_data():
 
 #2 окно
 def loginn():
+    def changeOnHoverk(button, colorOnHover, colorOnLeave):
+        button.bind("<Enter>", func=lambda e: button.config(
+            background=colorOnHover))
+
+        # background color on leving widget
+        button.bind("<Leave>", func=lambda e: button.config(
+            background=colorOnLeave))
+
+    root.withdraw()
     login = Toplevel()
+    login.protocol('WM_DELETE_WINDOW', lambda: root.destroy())
     stylee = ttk.Style(login)
     login['bg'] = '#1C222B'
     login.title('Login')
@@ -32,7 +46,7 @@ def loginn():
     frame_1 = Frame(login, bg='#1C222B')
     frame_1.place(relwidth=1, relheight=1)
 
-#проверка после регистр
+    #проверка после регистр
     def log_pass():
         if login_enter.get() == '':
             messagebox.showerror(':/', 'You forget to enter email')
@@ -51,7 +65,7 @@ def loginn():
                 messagebox.showerror('Error', 'Incorrect email')
 
 
-    login_head = Label(login, text='Ok! Now you need to login', bg='#1C222B', fg='#EBC2FF',  font=('Courier', 27))
+    login_head = Label(login, text='Ok! Now you need to login', bg='#1C222B', fg='#F967BC',  font=('Courier', 27))
     login_head.pack(pady=15)
     login_email = Label(login, text='Enter email', bg='#1C222B', fg='#EBC2FF', font=('Courier', 15))
     login_email.pack(pady=10)
@@ -61,8 +75,9 @@ def loginn():
     login_password.pack(pady=10)
     enter_password = Entry(login, show='✖️', bg='#333D4D',fg='#EBC2FF')
     enter_password.pack(pady=5)
-    button_login = Button(login, text='Login now!', bg='#1C222B', fg='#3A5169', font=('Courier', 12), command=log_pass)
+    button_login = Button(login, text='Login now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=log_pass)
     button_login.pack(pady=25)
+    changeOnHoverk(button_login, "#FE95D2", "#1C222B")
 
 
 def showpassword():
@@ -70,6 +85,15 @@ def showpassword():
         password_enter['show'] = ''
     else:
         password_enter['show'] = '✖️'
+
+#ИЗМЕНЕНИЕ ЦЫЕТА ПРИ НАВЕДЕНИИ
+def changeOnHover(button, colorOnHover, colorOnLeave):
+    button.bind("<Enter>", func=lambda e: button.config(
+        background=colorOnHover))
+
+    # background color on leving widget
+    button.bind("<Leave>", func=lambda e: button.config(
+        background=colorOnLeave))
 
 root = Tk()
 style = ttk.Style(root)
@@ -85,8 +109,17 @@ canvas.pack()
 frame = Frame(root, bg='#1C222B')#Создание фрейма, чтобы было удоблее распологать объекты
 frame.place(relwidth=1, relheight=1)
 
+#ФОТО
+img = Image.open('cat.png')
+res_img = img.resize((100,100))
+imgg = ImageTk.PhotoImage(res_img)
+lab = Label(image=imgg)
+lab.image = imgg
+lab.place(x=204,y=450)
+
+
 #создание поля регистрации
-title = Label(frame, text='Registration', bg='#1C222B', fg='#EBC2FF', font=('Courier', 30))
+title = Label(frame, text='Registration', bg='#1C222B', fg='#F967BC', font=('Courier', 30))
 title.pack(pady=20)
 
 name = Label(frame, text='Enter username', bg='#1C222B', fg='#EBC2FF', font=('Courier',15))
@@ -113,12 +146,13 @@ com_password.pack(pady=15)
 com_password_enter = Entry(frame, show='✖️', bg='#333D4D',fg='#EBC2FF')
 com_password_enter.pack(pady=1)
 
-sh_pass = Button(frame, text='👁', bg='#1C222B', fg='#3A5169', font=('Courier', 10), command=showpassword).place(x=325, y=285)
+sh_pass = Button(frame, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(x=325, y=285)
 
 
-button = Button(frame, text='Registration right now!', bg='#1C222B', fg='#3A5169', font=('Courier', 12), command=save_data)
+button = Button(frame, text='Registration right now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=save_data)
 button.pack(pady=25)
 
+changeOnHover(button, "#FE95D2", "#1C222B")
 
 root.mainloop()
 

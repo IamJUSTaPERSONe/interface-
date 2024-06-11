@@ -3,8 +3,6 @@ from tkinter import messagebox
 import pickle
 import tkinter.ttk as ttk
 from PIL import ImageTk, Image
-import os
-
 
 #Проверка заполнения формы
 def save_data():
@@ -24,6 +22,7 @@ def save_data():
         loginn()
 
 #2 окно
+#Функция подсвета кнопок
 def loginn():
     def changeOnHoverk(button, colorOnHover, colorOnLeave):
         button.bind("<Enter>", func=lambda e: button.config(
@@ -33,7 +32,8 @@ def loginn():
         button.bind("<Leave>", func=lambda e: button.config(
             background=colorOnLeave))
 
-    root.withdraw()
+
+    # root.withdraw() #ЗАкрывает главное окно при открытие дочернего
     login = Toplevel()
     login.protocol('WM_DELETE_WINDOW', lambda: root.destroy())
     stylee = ttk.Style(login)
@@ -43,8 +43,15 @@ def loginn():
     login.geometry('600x400')
     login.resizable(width=False, height=False)
 
-    frame_1 = Frame(login, bg='#1C222B')
-    frame_1.place(relwidth=1, relheight=1)
+    # img1 = Image.open('лапки.png')
+    # res_img1 = img1.resize((100, 100))
+    # imgg1 = ImageTk.PhotoImage(res_img1)
+    # lab1 = Label(image=imgg1)
+    # lab1.image = imgg1
+    # lab1.config(bg='#1C222B')
+    # lab1.place(x=202, y=200)
+    # frame_1 = Frame(login, bg='#1C222B')
+    # frame_1.place(relwidth=1, relheight=1)
 
     #проверка после регистр
     def log_pass():
@@ -64,7 +71,6 @@ def loginn():
             else:
                 messagebox.showerror('Error', 'Incorrect email')
 
-
     login_head = Label(login, text='Ok! Now you need to login', bg='#1C222B', fg='#F967BC',  font=('Courier', 27))
     login_head.pack(pady=15)
     login_email = Label(login, text='Enter email', bg='#1C222B', fg='#EBC2FF', font=('Courier', 15))
@@ -79,6 +85,9 @@ def loginn():
     button_login.pack(pady=25)
     changeOnHoverk(button_login, "#FE95D2", "#1C222B")
 
+def on_closing():
+    if messagebox.askokcancel('Exiting the app', 'Do you want to exiting the app?'):
+        root.destroy()
 
 def showpassword():
     if password_enter['show'] == '✖️':
@@ -90,13 +99,13 @@ def showpassword():
 def changeOnHover(button, colorOnHover, colorOnLeave):
     button.bind("<Enter>", func=lambda e: button.config(
         background=colorOnHover))
-
     # background color on leving widget
     button.bind("<Leave>", func=lambda e: button.config(
         background=colorOnLeave))
 
 root = Tk()
 style = ttk.Style(root)
+root.protocol('WM_DELETE_WINDOW', on_closing)
 root['bg'] = '#1C222B'
 root.title('Registration')
 root.wm_attributes('-alpha', 0.91)#Прозрачность окна
@@ -110,45 +119,34 @@ frame = Frame(root, bg='#1C222B')#Создание фрейма, чтобы бы
 frame.place(relwidth=1, relheight=1)
 
 #ФОТО
-img = Image.open('cat.png')
+img = Image.open('catik.png')
 res_img = img.resize((100,100))
 imgg = ImageTk.PhotoImage(res_img)
 lab = Label(image=imgg)
 lab.image = imgg
-lab.place(x=204,y=450)
-
+lab.config(bg='#1C222B')
+lab.place(x=202,y=447)
 
 #создание поля регистрации
 title = Label(frame, text='Registration', bg='#1C222B', fg='#F967BC', font=('Courier', 30))
 title.pack(pady=20)
-
 name = Label(frame, text='Enter username', bg='#1C222B', fg='#EBC2FF', font=('Courier',15))
 name.pack()
-
 name_enter = Entry(frame, bg='#333D4D',fg='#EBC2FF')
 name_enter.pack(padx=20, pady=10)
-
 email = Label(frame, text='Enter email', bg='#1C222B', fg='#EBC2FF', font=('Courier',15))
 email.pack(pady=15)
-
 email_enter = Entry(frame, bg='#333D4D',fg='#EBC2FF')
 email_enter.pack()
-
 password = Label(frame, text='Enter password', bg='#1C222B', fg='#EBC2FF', font=('Courier',15))
 password.pack(pady=15)
-
 password_enter = Entry(frame, show='✖️', bg='#333D4D',fg='#EBC2FF')
 password_enter.pack()
-
 com_password = Label(frame, text='Repeat password', bg='#1C222B', fg='#EBC2FF', font=('Courier',15))
 com_password.pack(pady=15)
-
 com_password_enter = Entry(frame, show='✖️', bg='#333D4D',fg='#EBC2FF')
 com_password_enter.pack(pady=1)
-
 sh_pass = Button(frame, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(x=325, y=285)
-
-
 button = Button(frame, text='Registration right now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=save_data)
 button.pack(pady=25)
 

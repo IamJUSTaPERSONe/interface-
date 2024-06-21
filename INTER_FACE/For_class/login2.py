@@ -1,11 +1,10 @@
-#interface with db
 from tkinter import *
 from tkinter import messagebox
 import tkinter.ttk as ttk
 from PIL import ImageTk, Image
 import sqlite3
 
-db = sqlite3.connect('databaseusers.db') #Без нижнего подчеркивания 
+db = sqlite3.connect('databaseusers.db')
 cursor = db.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (
     login TEXT, 
@@ -13,8 +12,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
 )''')
 db.commit()
 
-#Проверка поле регистрации и созранение в бд
 def Win_reg():
+    login.withdraw()
+    def logingo():
+        root.destroy()
+        login.deiconify()
+
+
     def save_data():
         if email_enter.get() == '':
             messagebox.showerror(':/', 'You forget to enter email')
@@ -44,7 +48,7 @@ def Win_reg():
             password_enter['show'] = ''
         else:
             password_enter['show'] = '✖️'
-    login.withdraw()
+
     root = Tk()
     style = ttk.Style(root)
     root['bg'] = '#1C222B'
@@ -103,18 +107,16 @@ def Win_reg():
     sh_pass = Button(frame, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(x=325, y=285)
     button = Button(frame, text='Registration right now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12),command=save_data)
     button.pack(pady=25)
-    button1 = Button(frame, text='or login', bg='#1C222B', fg='white', font=('Courier', 8), command=login)
+    button1 = Button(frame, text='Go back', bg='#1C222B', fg='white', font=('Courier', 8), command=logingo)
     button1.place(x=310, y=450)
     changeOnHover(button, "#FE95D2", "#1C222B")
     changeOnHover(button1, "#FE95D2", "#1C222B")
-    
-#окно После логина
+
 def page():
     rootik = Toplevel()
     rootik['bg']='black'
     rootik.title('Wk')
-    
- #ПРоверка после логина
+
 def Win_new_page():
     if login_enter.get() == '':
         messagebox.showerror(':/', 'You forget to enter email')
@@ -130,6 +132,11 @@ def Win_new_page():
         else:
             messagebox.showinfo('', 'you sucsessful reg')
             page()
+def showpassword():
+    if enter_password['show'] == '✖️':
+        enter_password['show'] = ''
+    else:
+        enter_password['show'] = '✖️'
 
 #Функция подсвета кнопок
 def changeOnHoverk(button, colorOnHover, colorOnLeave):
@@ -157,7 +164,7 @@ login_password = Label(login, text='Enter password',  bg='#1C222B', fg='#EBC2FF'
 login_password.pack(pady=10)
 enter_password = Entry(login, show='✖️', bg='#333D4D',fg='#EBC2FF')
 enter_password.pack(pady=5)
-
+sh_pass = Button(login, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(x=325, y=200)
 button_login = Button(login, text='Login now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=Win_new_page)
 button_login.pack(pady=25)
 button_reg = Button(login, text='or registration', bg='#1C222B', fg='white', font=('Courier', 9), command=Win_reg)

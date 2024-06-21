@@ -5,7 +5,7 @@ import tkinter.ttk as ttk
 from PIL import ImageTk, Image
 import sqlite3
 
-db = sqlite3.connect('databaseusers.db')
+db = sqlite3.connect('databaseusers.db') #Без нижнего подчеркивания 
 cursor = db.cursor()
 cursor.execute('''CREATE TABLE IF NOT EXISTS users (
     login TEXT, 
@@ -13,8 +13,8 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
 )''')
 db.commit()
 
+#Проверка поле регистрации и созранение в бд
 def Win_reg():
-
     def save_data():
         if email_enter.get() == '':
             messagebox.showerror(':/', 'You forget to enter email')
@@ -107,12 +107,14 @@ def Win_reg():
     button1.place(x=310, y=450)
     changeOnHover(button, "#FE95D2", "#1C222B")
     changeOnHover(button1, "#FE95D2", "#1C222B")
-
+    
+#окно После логина
 def page():
     rootik = Toplevel()
     rootik['bg']='black'
     rootik.title('Wk')
-
+    
+ #ПРоверка после логина
 def Win_new_page():
     if login_enter.get() == '':
         messagebox.showerror(':/', 'You forget to enter email')

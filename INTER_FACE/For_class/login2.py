@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import tkinter.ttk as ttk
-from PIL import ImageTk, Image
+# from PIL import ImageTk, Image
 import sqlite3
 
 db = sqlite3.connect('databaseusers.db')
@@ -12,12 +12,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS users (
 )''')
 db.commit()
 
-def Win_reg():
+
+def win_reg():
     login.withdraw()
+
     def logingo():
         root.destroy()
         login.deiconify()
-
 
     def save_data():
         if email_enter.get() == '':
@@ -27,10 +28,12 @@ def Win_reg():
         elif password_enter.get() != com_password_enter.get():
             messagebox.showerror('-_-', 'Your passwords do not match')
         else:
-            info = cursor.execute('SELECT * FROM users WHERE login=? AND password=?', (email_enter.get(),password_enter.get()))
+            info = cursor.execute('SELECT * FROM users WHERE login=? AND password=?', (email_enter.get(),
+                                                                                       password_enter.get()))
             db.commit()
             if info.fetchone() is None:
-                cursor.execute(f'INSERT INTO users (login,password) VALUES (?,?)', (email_enter.get(),password_enter.get()))
+                cursor.execute(f'INSERT INTO users (login,password) VALUES (?,?)', (email_enter.get(),
+                                                                                    password_enter.get()))
                 db.commit()
                 print('vi zaregestrirovan')
                 for i in cursor.execute('SELECT * FROM users'):
@@ -50,7 +53,6 @@ def Win_reg():
             password_enter['show'] = '✖️'
 
     root = Tk()
-    style = ttk.Style(root)
     root['bg'] = '#1C222B'
     root.title('Registration')
     root.wm_attributes('-alpha', 0.91)  # Прозрачность окна
@@ -104,26 +106,31 @@ def Win_reg():
     com_password.pack(pady=15)
     com_password_enter = Entry(frame, show='✖️', bg='#333D4D', fg='#EBC2FF')
     com_password_enter.pack(pady=1)
-    sh_pass = Button(frame, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(x=325, y=285)
-    button = Button(frame, text='Registration right now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12),command=save_data)
+    sh_pass = Button(frame, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(
+        x=325, y=285)
+    button = Button(frame, text='Registration right now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=
+        save_data)
     button.pack(pady=25)
     button1 = Button(frame, text='Go back', bg='#1C222B', fg='white', font=('Courier', 8), command=logingo)
     button1.place(x=310, y=450)
     changeOnHover(button, "#FE95D2", "#1C222B")
     changeOnHover(button1, "#FE95D2", "#1C222B")
 
+
 def page():
     rootik = Toplevel()
-    rootik['bg']='black'
+    rootik['bg'] = 'black'
     rootik.title('Wk')
 
-def Win_new_page():
+
+def win_new_page():
     if login_enter.get() == '':
         messagebox.showerror(':/', 'You forget to enter email')
     elif enter_password.get() == '':
         messagebox.showerror('-_-', 'You forget to enter password')
     else:
-        info = cursor.execute('SELECT * FROM users WHERE login=? AND password=?', (login_enter.get(), enter_password.get()))
+        info = cursor.execute('SELECT * FROM users WHERE login=? AND password=?', (login_enter.get(),
+                                                                                   enter_password.get()))
         db.commit()
         if info.fetchone() is None:
             for i in cursor.execute("SELECT * FROM users"):
@@ -132,13 +139,16 @@ def Win_new_page():
         else:
             messagebox.showinfo('', 'you sucsessful reg')
             page()
+
+
 def showpassword():
     if enter_password['show'] == '✖️':
         enter_password['show'] = ''
     else:
         enter_password['show'] = '✖️'
 
-#Функция подсвета кнопок
+
+# Функция подсвета кнопок
 def changeOnHoverk(button, colorOnHover, colorOnLeave):
     button.bind("<Enter>", func=lambda e: button.config(
         background=colorOnHover))
@@ -146,6 +156,7 @@ def changeOnHoverk(button, colorOnHover, colorOnLeave):
     # background color on leving widget
     button.bind("<Leave>", func=lambda e: button.config(
         background=colorOnLeave))
+
 
 login = Tk()
 stylee = ttk.Style(login)
@@ -158,16 +169,17 @@ login_head = Label(login, text='Login', bg='#1C222B', fg='#F967BC',  font=('Cour
 login_head.pack(pady=15)
 login_email = Label(login, text='Enter email', bg='#1C222B', fg='#EBC2FF', font=('Courier', 15))
 login_email.pack(pady=10)
-login_enter = Entry(login, bg='#333D4D',fg='#EBC2FF')
+login_enter = Entry(login, bg='#333D4D', fg='#EBC2FF')
 login_enter.pack(pady=5)
 login_password = Label(login, text='Enter password',  bg='#1C222B', fg='#EBC2FF', font=('Courier', 15))
 login_password.pack(pady=10)
-enter_password = Entry(login, show='✖️', bg='#333D4D',fg='#EBC2FF')
+enter_password = Entry(login, show='✖️', bg='#333D4D', fg='#EBC2FF')
 enter_password.pack(pady=5)
-sh_pass = Button(login, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(x=325, y=200)
-button_login = Button(login, text='Login now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=Win_new_page)
+sh_pass = Button(login, text='👁', bg='#1C222B', fg='#F967BC', font=('Courier', 10), command=showpassword).place(
+    x=325, y=200)
+button_login = Button(login, text='Login now!', bg='#1C222B', fg='#F967BC', font=('Courier', 12), command=win_new_page)
 button_login.pack(pady=25)
-button_reg = Button(login, text='or registration', bg='#1C222B', fg='white', font=('Courier', 9), command=Win_reg)
+button_reg = Button(login, text='or registration', bg='#1C222B', fg='white', font=('Courier', 9), command=win_reg)
 button_reg.place(x=190, y=300)
 changeOnHoverk(button_login, "#FE95D2", "#1C222B")
 changeOnHoverk(button_reg, "#FE95D2", "#1C222B")
